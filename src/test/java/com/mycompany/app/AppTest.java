@@ -10,8 +10,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.junit.Test;
-
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 /**
  * Unit test for simple App.
  */
@@ -20,11 +21,17 @@ public class AppTest
     /**
      * Rigorous Test :-)
      */
-    @Test(priority=1)
+    WebDriver chrome;
+    @BeforeClass
+    public void set()
+    {
+    System.setProperty("webdriver.chrome.driver","H:/downloads/chromedriver_win32 (1)/chromedriver.exe");
+	chrome=new ChromeDriver();
+	}
+    @Test (priority=1)
     public void setUp() throws InterruptedException
 	{
-		System.setProperty("webdriver.chrome.driver","H:/downloads/chromedriver_win32 (1)/chromedriver.exe");
-		WebDriver chrome=new ChromeDriver();
+		
 		
 		//test1: opening the web app
 		chrome.get("http://10.0.1.86/tatoc");
@@ -35,24 +42,26 @@ public class AppTest
 		assertTrue(true);
 	}
 
-	@Test(priority=2)
+	@Test (priority=2)
     public void gettingStartedWithBasicCourse() throws InterruptedException
 	{
+	
 
 	//test3:beginning with the basic course
 		chrome.findElement(By.tagName("a")).click();
 		Thread.sleep(1000);
 	}
 
-	@Test(priority=3)
+	@Test (priority=3)
     public void clickingRedBoxAndProceeding() throws InterruptedException
 	{
+		
 		//test4:clicking on the red box
 		chrome.findElement(By.className("greenbox")).click();
 		Thread.sleep(1000);
 	}
 
-	@Test(priority=4)
+	@Test (priority=4)
     public void frameHandling() throws InterruptedException
 	{	
 		//test5:making color of both boxes same
@@ -86,7 +95,7 @@ public class AppTest
 		Thread.sleep(1000);
 	}
 
-	@Test(priority=5)
+	@Test (priority=5)
     public void dragAndDrop() throws InterruptedException
 	{
 		//task6: drag and drop
@@ -99,7 +108,7 @@ public class AppTest
      	Thread.sleep(1000);
      }
 
-     @Test(priority=6)
+     @Test (priority=6)
     public void tabSwitching() throws InterruptedException
 	{
      	//task7: popup window
@@ -123,7 +132,7 @@ public class AppTest
      	Thread.sleep(1000);
      }
 
-     @Test(priority=7)
+     @Test (priority=7)
     public void cookieHandling() throws InterruptedException
 	{
      	//task8:cookies
